@@ -9,3 +9,8 @@ log.dirs=<%= @log_dirs %>
 <%- @entries.each do |k, v| %>
 <%= k %>=<%= v %>
 <%- end %>
+
+<% if @keystore_pass %>
+ssl.keystore.password=<%= @keystore_pass %>
+ssl.truststore.password=<%= @keystore_pass %>
+<% end %>

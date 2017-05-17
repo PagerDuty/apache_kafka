@@ -14,3 +14,6 @@ end
 
 depends "java"
 depends "runit"
+
+# This is a dependency but commented out due to issues with Berksfile in chef repo
+# depends "pdbase"

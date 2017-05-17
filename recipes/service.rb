@@ -51,7 +51,7 @@ when "upstart"
     mode "0644"
     variables(
       :kafka_umask => sprintf("%#03o", node["apache_kafka"]["umask"]),
-      :pd_generate_certs => node["apache_kafka"]["pd_generate_certs"],
+      :pd_generate_certs => node["apache_kafka"]["ssl"]["pd_generate_certs"],
       :kafka_bin_dir => node['apache_kafka']['bin_dir']
     )
     notifies :restart, "service[kafka]", :delayed if do_restart
