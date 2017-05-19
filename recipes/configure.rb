@@ -55,7 +55,7 @@ template ::File.join(node["apache_kafka"]["config_dir"],
   source "properties/server.properties.erb"
   owner "kafka"
   action :create
-  mode "0644"
+  mode "0600"
   variables(
     :broker_id => broker_id,
     :port => node["apache_kafka"]["port"],
