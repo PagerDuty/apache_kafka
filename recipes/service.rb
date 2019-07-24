@@ -58,7 +58,6 @@ if enable_service
       )
     end
     service "kafka" do
-      provider Chef::Provider::Service::SystemD
       supports :status => true, :restart => true, :reload => true
       action [:start, :enable]
     end
