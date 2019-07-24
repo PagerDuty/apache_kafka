@@ -1,0 +1,15 @@
+[Unit]
+Description=Apache Kafka server (broker)
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+PIDFile=/var/run/kafka.pid
+User=kafka
+Group=root
+ExecStart=/bin/bash -c ". /etc/default/kafka && LOG_DIR=/var/log/kafka <%= @kafka_bin_dir %>/kafka-server-start.sh <%= @kafka_config_dir %>/server.properties"
+ExecStop=<%= @kafka_bin_dir %>/kafka-server-stop.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
