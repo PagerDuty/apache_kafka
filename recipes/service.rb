@@ -45,6 +45,22 @@ end
 
 if enable_service
   case node["apache_kafka"]["service_style"]
+  when "systemd"
+    template "/etc/systemd/system/kafka.service" do
+      source "kafka.service.erb"
+      owner "root"
+      group "root"
+      action :create
+      mode "0644"
+      variables(
+        :kafka_bin_dir => node['apache_kafka']['bin_dir'],
+        :kafka_config_dir => node['apache_kafka']['config_dir']
+      )
+    end
+    service "kafka" do
+      supports :status => true, :restart => true, :reload => true
+      action [:start, :enable]
+    end
   when "upstart"
     template "/etc/init/kafka.conf" do
       source "kafka.init.erb"
