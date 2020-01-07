@@ -10,6 +10,7 @@ Group=root
 ExecStart=/bin/bash -c ". /etc/default/kafka && LOG_DIR=/var/log/kafka <%= @kafka_bin_dir %>/kafka-server-start.sh <%= @kafka_config_dir %>/server.properties"
 ExecStop=<%= @kafka_bin_dir %>/kafka-server-stop.sh
 Restart=on-failure
+LimitNOFILE=32768
 
 [Install]
 WantedBy=multi-user.target
