@@ -21,6 +21,7 @@ default["apache_kafka"]["jmx"]["port"] = ""
 default["apache_kafka"]["jmx"]["opts"] = "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
 default["apache_kafka"]["install_java"] = true
+default["apache_kafka"]["java_home"] = ""
 
 default["apache_kafka"]["install_dir"] = "/usr/local/kafka"
 default["apache_kafka"]["data_dir"] = "/var/log/kafka"
