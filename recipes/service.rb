@@ -38,7 +38,8 @@ template "/etc/default/kafka" do
     :kafka_jvm_performance_opts => node["apache_kafka"]["kafka_jvm_performance_opts"],
     :kafka_opts => node["apache_kafka"]["kafka_opts"],
     :jmx_port => node["apache_kafka"]["jmx"]["port"],
-    :jmx_opts => node["apache_kafka"]["jmx"]["opts"]
+    :jmx_opts => node["apache_kafka"]["jmx"]["opts"],
+    :java_home => node["apache_kafka"]["java_home"]
   )
   notifies :restart, "service[kafka]", :delayed if do_restart
 end
